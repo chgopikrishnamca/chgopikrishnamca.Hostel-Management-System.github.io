@@ -1,0 +1,57 @@
+.about-container{
+    margin: 0px;
+    font-family: "Comic Sans MS";
+    padding-top: 0px;
+    padding-bottom: 10px;
+    width: auto;
+    background-color: #03BCD4;
+}
+.headings{
+    font-family: "Agency FB";
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    color : grey;
+    height: 55px;
+    padding-top: 15px;
+}
+.content{
+    text-align: justify;
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+.sec1{
+    padding:0px 40px 2px;
+}
+.sec2{
+    padding-left: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    alignment: center;
+    text-align: center;
+}
+.sec3{
+    background-image: url("images/background5.jpg");
+    padding-top: 10px;
+    padding-bottom: 10px;
+    alignment: center;
+    table-layout: auto;
+}
+.sec4{
+    margin-top: 0;
+    padding: 10px;
+    height: 50px;
+}
+table{
+    margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .headings{
+        font-size: 25px;
+    }
+    table{
+        height: auto;
+        width: 450px;
+    }
+}

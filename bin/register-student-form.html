@@ -1,0 +1,270 @@
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <style>
+        .registerStudent{
+            background-image: url("../images/background5.jpg");
+            padding-left: 100px;
+        }
+        .registerStudent th{
+            font-family: "Comic Sans MS";
+            color:white;
+            padding: 2px;
+            text-align: left;
+        }
+        .registerStudent span{
+            color: darkorange;
+        }
+        .registerStudent tr td{
+            padding-top: 20px;
+            height: 50px;
+        }
+
+        /* css For "register-user.php" */
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        /* Full-width input fields */
+        input[type=text], input[type=password], input[type=email], input[type=date] {
+            width: 350px;
+            height: 40px;
+            padding-left: 15px;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+            font-family: "Lucida Console", Monaco, monospace;
+            font-size: 15px;
+            color: blue;
+        }
+
+        input[type=submit]{
+            width: 150px;
+            padding: 15px;
+            margin: 15px 0 0 130px;
+            display: inline-block;
+            border: none;
+            background:  limegreen;
+            font-family: "Comic Sans MS";
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        input[type=submit]:hover{
+            background:deepskyblue;
+        }
+        select {
+            width: 350px;
+            height: 40px;
+            padding: 10px 20px;
+            border: none;
+            background: #f1f1f1;
+            font-family: "Lucida Console", Monaco, monospace;
+        }
+        select option {
+            padding: 16px 20px;
+            border: none;
+            border-radius: 0px;
+            background-color: #f1f1f1;
+            font-size: 15px;
+            font-family: "Agency FB";
+        }
+        textarea{
+            width: 350px;
+            background: #f1f1f1;
+            padding-top: 15px;
+            padding-left: 15px;
+            margin: 5px 0 22px 0;
+            font-family: "Lucida Console", Monaco, monospace;
+            font-size: 15px;
+        }
+        /* Add a background color when the inputs get focus */
+        input[type=text]:focus, input[type=password]:focus, input[type=email] {
+            background-color: #ddd;
+            outline: none;
+        }
+    </style>
+
+</head>
+
+<div class="registerStudent" ng-app="HostelApp" ng-controller="RegisterStudentController">
+    <h1 style="font-family: 'Agency FB';color:dodgerblue;padding-top: 20px;padding-left: 300px">
+        <u>Register Student Details</u>
+    </h1>
+    <form name="registerStudentForm" class="form-container" novalidate>
+        <div class="register-container">
+            <table  align="center" style="padding-left: 100px">
+                <tr>
+                    <th width="150px">Roll No.</th>
+                    <th>:</th>
+                    <td style="padding-bottom:13px">
+                        <input type="text" placeholder="Enter Roll No." name="rollno" ng-model="rollno" ng-pattern="/[0-9]$/" ng-minlength="4" ng-maxlength="10" ng-required="true">
+                    </td>
+                    <th>
+                        <span ng-show="registerStudentForm.rollno.$error.required">  * The roll no. is required.</span>
+                        <span ng-show="registerStudentForm.rollno.$error.minlength">  * The rollno should contains at least 4 digits<span>
+                        <span ng-show="registerStudentForm.rollno.$error.maxlength">  * The rollno should not exceed 10 digits</span>
+                        <span ng-show="registerStudentForm.rollno.$error.pattern"> * The rollno should be in numeric only</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>:</th>
+                    <td style="padding-bottom:13px">
+                        <input type="text" placeholder="Enter Name" name="name" ng-model="name" ng-pattern="/[a-zA-Z]$/" ng-minlength="4" ng-maxlength="40" ng-required="true">
+                    </td>
+                    <th>
+                        <span ng-show="registerStudentForm.name.$error.required">  * The name is required.</span>
+                        <span ng-show="registerStudentForm.name.$error.minlength">  * The name should be at least 4 characters length</span>
+                        <span ng-show="registerStudentForm.name.$error.maxlength">  * The name should not exceed 50 characters</span>
+                        <span ng-show="registerStudentForm.name.$error.pattern"> * The name should be in alphabets only</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Branch</th>
+                    <th>:</th>
+                    <td style="padding-bottom:15px">
+                        <select name="branch" ng-model="branch" ng-required="true">
+                            <option>MCA</option>
+                            <option>M.Tech</option>
+                            <option>B.Tech</option>
+                        </select>
+
+                    </td>
+                    <th>
+                        <span ng-show="registerStudentForm.branch.$error.required || registerStudentForm.branch.$invalid">* Choose Branch.</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Course</th>
+                    <th>:</th>
+                    <th style="padding-top:13px">
+                        <select name="course" ng-model="course"  ng-required="true">
+                            <option>MCA</option>
+                            <option>Civil</option>
+                            <option>IT</option>
+                            <option>CSE</option>
+                            <option>MECH</option>
+                            <option>EEE</option>
+                            <option>ECE</option>
+                        </select>
+                    </th>
+                    <th>
+                        <span ng-show="registerStudentForm.course.$error.required || registerStudentForm.course.$invalid">* Choose Course.</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="padding-top:13px">Year</th>
+                    <th>:</th>
+                    <th style="padding-top:14px">
+                        <select name="year" ng-model="year" ng-required="true">
+                            <option>I</option>
+                            <option>II</option>
+                            <option>III</option>
+                            <option>IV</option>
+                        </select>
+                    </th>
+                    <th>
+                        <span ng-show="registerStudentForm.year.$error.required || registerStudentForm.year.$invalid">* Choose Course.</span>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>Joined Date</th>
+                    <th>:</th>
+                    <td style="padding-bottom:15px">
+                        <input type='date' placeholder="Choose date" name="join_date" ng-model='join_date' ng-required="true">
+                    </td>
+                    <th>
+                        <span ng-show="registerStudentForm.join_date.$error.required"> * Choose Joined Date</span>
+                        <span ng-show="registerStudentForm.join_date.$error.date"> * Choose Valid Date</span>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>Vocated Date</th>
+                    <th>:</th>
+                    <td style="padding-bottom:15px">
+                        <input type='date' placeholder="Choose date" name="vocate_date" ng-model='vocate_date'>
+                    </td>
+                    <th></th>
+                </tr>
+
+                <tr>
+                    <th>Phone</th>
+                    <th>:</th>
+                    <td style="padding-bottom:15px"><input type="text" placeholder="Enter Mobile Number"
+                               name="phone" ng-model="phone" ng-required="true" ng-minlength="10" ng-maxlength="10" ng-pattern="/[0-9]{10}/">
+                    </td>
+                    <th>
+                        <span ng-show="registerStudentForm.phone.$error.required"> * Mobile number should not be empty.</span>
+                        <span ng-show="registerStudentForm.phone.$error.minlength"> * Mobile number must have 10 digits</span>
+                        <span ng-show="registerStudentForm.phone.$error.maxlength"> * Mobile number must have 10 digits only.</span>
+                        <span ng-show="registerStudentForm.phone.$error.pattern"> * Mobile number is invalid</span>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>Email</th>
+                    <th>:</th>
+                    <td style="padding-bottom:15px">
+                        <input type='email' placeholder="Enter Email" name="email" ng-model='email' ng-required="true">
+                    </td>
+                    <th>
+                        <span ng-show="registerStudentForm.email.$error.required"> * Email ID should not be empty.</span>
+                        <span ng-show="registerStudentForm.email.$error.email"> * Email ID is not valid</span>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>Address</th>
+                    <th>:</th>
+                    <td>
+                        <textarea rows="5" cols="50" placeholder="Enter Full Address Details here" name="address" ng-model="address"></textarea>
+                    </td>
+                    <th style="color: orange;">
+                        <span ng-show="registerStudentForm.address.$error.required"> * Address should not be empty.</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th></th><th></th>
+                    <td>
+                        <input type="submit" value="Register here" name="submit" ng-click="insertStudentData()">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+<script>
+    var app = angular.module("HostelApp",[]);
+    app.controller("RegisterStudentController", function($scope, $http){
+        $scope.insertStudentData = function(){
+            $http.post("insertStudentDetails.php",
+                {
+                    'rollno':$scope.rollno,
+                    'name': $scope.name,
+                    'branch': $scope.branch,
+                    'course': $scope.course,
+                    'year': $scope.year,
+                    'join_date': $scope.join_date,
+                    'vocate_date': $scope.vocate_date,
+                    'phone': $scope.phone,
+                    'email': $scope.email,
+                    'address': $scope.address
+                }).success(function(data){
+                alert(data);
+                $scope.rollno = null;
+                $scope.name = null;
+                $scope.branch = null;
+                $scope.course = null;
+                $scope.year = null;
+                $scope.join_date = null;
+                $scope.vocate_date = null;
+                $scope.phone= null;
+                $scope.email= null;
+                $scope.address = null;
+            });
+        }
+    });
+</script>
+

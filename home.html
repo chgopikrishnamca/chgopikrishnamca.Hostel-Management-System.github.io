@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hostel Management</title>
+    <style>
+        <style>
+        body {
+            background-color: lightblue;
+            -webkit-user-select: none;
+            -moz-user-select: -moz-none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .active {
+            background-image: url("images/background.jpg");
+            color: ghostwhite;
+        }
+
+        .images img{
+            margin-top: 0;
+            max-width: 100%;
+            width : 100%;
+            height : 400px;
+            position: relative;
+            float : left;
+            border-style: groove;
+            border: #03BCD4 2px;
+            box-shadow: 200px 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-filter: drop-shadow(5px 5px 5px #222);
+            filter:         drop-shadow(5px 5px 5px #222);
+        }
+
+        .dot {
+            height: 13px;
+            width: 13px;
+            margin: 10px 5px;
+            background-color: #2E86C1;
+            color : Grey;
+            border-radius: 30%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .info {
+            background-image:url("images/background2.jpg");
+            font-weight: ;
+            font-family: "Comic Sans MS";
+            padding: 30px 20px 15px 20px;
+            height: auto;
+            margin-top : 0px;
+            cursor: pointer;
+            text-align: justify;
+        }
+
+        .ftable{
+            padding-top: 20px;
+            background-color: dimgrey;
+            font-weight: bold;
+            color : lightblue;
+            cursor: pointer;
+            font-family: "Agency FB";
+        }
+        .ftable td{
+            color: white;
+            padding: 5px;
+        }
+
+        footer table caption{
+            padding-top: 10px ;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media screen and (max-width: 850px) {
+            body{
+                padding: 5px;
+            }
+            .images img{
+                max-width: 200px;
+                width : auto;
+                height : auto;
+                position: relative;
+                float : left;
+            }
+
+            .info {
+                background-image:url("images/background2.jpg");
+                font-family: "Comic Sans MS";
+                padding: 10px;
+                height: auto;
+                margin-top : 0px;
+                clear: both;
+
+            }
+            .ftable table{
+                height : auto;
+                width:  auto;
+                font-family: "Agency FB";
+            }
+
+        }
+    </style>
+    </head>
+    <body>
+    <div>
+      <div class="tabcontent" id="Home">
+          <div class="images">
+              <div class="mySlides fade"><img src="images/clg.jpg" /></div>
+              <div class="mySlides fade"><img src="images/clg2.jpg" /></div>
+              <div class="mySlides fade"><img src="images/gs.JPG" /></div>
+              <div class="mySlides fade"><img src="images/bs.jpg" /></div>
+          </div>           <br>
+
+          <div style="text-align:center">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+          </div>
+
+          <script src="scripts/main-imageslider.js">  </script>
+
+          <div class="info">
+              <h2 style="text-align : center; color: whitesmoke;">JNTU HOSTELS</h2><br>
+              <p><b>JNTUK-UCEV offers a wide range of accommodation which is located in the campus. The hostel consists of more than 400 students in each block. The rooms are more convenient. The hostel mess can be handled by the students comitte as it became student managed hostel. Dispensary is available with a qualified doctor which has the facilities for first-aid and minor ailments. The hostels are provided with 24/7 ambulance facility. There are separate wardens for both boys and girls hostels for monitoring the activities. The hostellers are expected to follow strictly all the hostel rules, as decided by the wardens.</p>
+              <br><p><b>The college provides the separated hostel facility for both boys and girls. There are two building blocks allocated for both boys and girls hostel. Each block contains separate halls for mess. Boys contains 110 rooms and girls hostel contains 120 rooms. Totally, the hostels provide the admissions for 1500 students. Students who are 50km away from the college are eligible to get the hostel admission. The college provide the hostel admission for PG students also.</p>
+              <br><p><b>The students need to pay the mess bill monthly and a term fee at twice the year. The fee structure and other details are 	given in the <a href="about.php" style="text-decoration: none">"About"</a> section. For more details, <a href="contact.php" style="text-decoration: none"> "Contact"</a> the respective authorities.</p>
+          </div>
+
+          <div class="ftable">
+              <table border="0" cellspacing="2" cellpadding="10" width="100%" bgcolor="">
+                  <caption style="{align:'center';font-weight: bold}">>>> CONTACT DETAILS <<<</caption>
+                  <tr>
+                      <td align="center"><b><u>Boys Hostel</u></b></td>	<td align="center"><b><u>Girls Hostel</td>
+                  </tr>
+                  <tr>
+                      <td align="center">Mr. B. Tirumala Rao : 89222 77915</td>	<td align="center">Dr. P.Sridevi : 94937 59290</td>
+                  </tr>
+                  <tr>
+                      <td align="center">Mr. W. Anil : 85006 69667</td>	<td align="center">Mrs. B.Nalini : 99126 09545</td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+*{margin: 0}
+.contact-container {
+    margin-top: 0px;
+    border-style:none;
+    font-family:"Comic Sans MS";
+    background-color: grey;
+    height: auto;
+}
+.contact_us{
+    height: 60px;
+    background-color: deepskyblue;
+    padding-top: 20px;
+    float: none;
+}
+.box_container_main{
+    height: 300px;
+    margin-top: 0px;
+    background-color: grey;
+    padding-top: 10px;
+    clear: both;
+}
+.box_container_sub{
+    font-family: "Agency FB";
+    margin-top: 10px;
+    background-color: #ced4da;
+    height: auto;
+    clear: both;
+}
+.box_main {
+    width: 550px;
+    height : auto;
+    padding: 20px;
+    border: 2px solid lightgrey;
+    margin-left: 80px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float: left;
+    box-sizing: border-box;
+    background-color: #ced4da;
+    clear;
+}
+.box_sub{
+    width: 280px;
+    height : auto;
+    padding: 5px;
+    border: 2px solid lightgrey;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    float: left;
+    box-sizing: border-box;
+    background-color: blanchedalmond;
+    clear;
+}
+.box_sub img{
+    padding: 8px;
+}
+p{
+    text-align: justify;
+    padding-top: 20px;
+    font-family: "Comic Sans MS";
+}
+.locateheader{
+    width: auto;
+    height: 90px;
+    background-color: #ced4da;
+    clear: both;
+}
+.text{
+    height : auto;
+    width : 390px;
+    font-family : "Agency FB";
+    font-size : 40px;
+    margin-top: 1px;
+    padding:40px 0px 30px 40px ;
+    float : left;
+
+}
+#map{
+    height : auto;
+    padding-right : 40px;
+    width : 860px;
+    text-align : right;
+    margin-top : 0px;
+    float : Left;
+    clear: both;
+}
+.footer{
+    display: block;
+    font-family: "Arial";
+    font-weight: bold;
+    text-align: center;
+    height: 85px;
+    background-color: #bbbbbb;
+    clear:both;
+}
+
+@media screen and (max-width: 600px) {
+    .box_container_main{
+        height: 300px;
+        margin-top: 0px;
+        background-color: grey;
+        padding-top: 10px;
+    }
+    .box_container_sub{
+        height: 3850px;
+        margin-top: 10px;
+        background-color: #ced4da;
+    }
+    #map{
+        height : 400px;
+        padding-right : 40px;
+        width : auto;
+        text-align : right;
+        margin-top : 10px;
+        float : Left;
+    }
+}

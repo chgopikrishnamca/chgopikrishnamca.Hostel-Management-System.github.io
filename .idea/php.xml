@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="http:localhost:8080/myhostel/index.php" />
+      <path value="http:8080/myhostel/insertStudentDetails.php" />
+    </include_path>
+  </component>
+</project>

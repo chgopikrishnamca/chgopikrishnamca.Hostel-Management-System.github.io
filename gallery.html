@@ -1,0 +1,191 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    .gallery-container {
+        font-family: Arial;
+        height : auto;
+        margin-top: 0px;
+    }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    .design{
+        height : 175px;
+        background-image : url("images/banner-gallery3.jpg");
+        border-bottom-style: groove;
+    }
+    .mySlides img {
+        height : 400px;
+        width : 100%;
+    }
+
+    .container {
+        position: relative;
+        height : 450px;
+
+    }
+    .column img{
+        width : auto;
+        height : 100px;
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    .cursor {
+        cursor: pointer;
+    }
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 60%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        background-color : #F0FFF0;
+        color: black;
+        font-weight: bold;
+        font-size: 20;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+        opacity : 0.4;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    /* Container for image text */
+    .caption-container {
+        text-align: center;
+        background-color: grey;
+        padding: 1px ;
+        color: white;
+        opacity : 0.9;
+        padding: 15px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    /* Six columns side by side */
+    .column {
+        float: left;
+        width: 16.66%;
+    }
+    /* Add a transparency effect for thumnbail images */
+    .demo {
+        opacity: 0.6;
+    }
+
+    .active,.demo:hover {
+        opacity: 1;
+    }
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    @media screen and (max-width: 600px) {
+    }
+
+</style>
+<div class="gallery-container">
+    <div class="design">
+    </div>
+
+    <div class="container">
+    <div class="mySlides">
+
+        <img src="images/clg2.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="images/clg.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="images/clge.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="images/bs.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="images/gs.JPG" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="images/clg.jpg" style="width:100%">
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)"> < </a>
+    <a class="next" onclick="plusSlides(1)"> > </a>
+
+    <div class="caption-container">
+        <p id="caption"></p>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <img class="demo cursor" src="images/clg2.jpg" style="width:100%" onclick="currentSlide(1)" alt="img1">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="images/clg.jpg" style="width:100%" onclick="currentSlide(2)" alt="img2">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="images/clge.jpg" style="width:100%" onclick="currentSlide(3)" alt="img3">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="images/bs.jpg" style="width:100%" onclick="currentSlide(4)" alt="img4">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="images/clge.jpg" style="width:100%" onclick="currentSlide(5)" alt="img11">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="images/clg.jpg" style="width:100%" onclick="currentSlide(6)" alt="img22">
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        captionText.innerHTML = dots[slideIndex-1].alt;
+    }
+</script>

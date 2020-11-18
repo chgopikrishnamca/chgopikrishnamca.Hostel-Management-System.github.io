@@ -1,0 +1,240 @@
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <style>
+        .registerUser{
+            background-image: url("images/background5.jpg");
+            padding-left: 100px;
+        }
+        .registerUser th{
+            font-family: "Comic Sans MS";
+            color:white;
+            padding: 2px;
+            text-align: left;
+        }
+        .registerUser span{
+            color: darkorange;
+        }
+        .registerUser tr td{
+            padding-top: 20px;
+            height: 50px;
+        }
+
+        /* css For "register-user.php" */
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        /* Full-width input fields */
+        input[type=text], input[type=password], input[type=email] {
+            width: 350px;
+            height: 50px;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+            font-family: "Lucida Console", Monaco, monospace;
+            font-size: 15px;
+            color: blue;
+        }
+
+        input[type=submit]{
+            width: 150px;
+            padding: 15px;
+            margin: 15px 0 0 130px;
+            display: inline-block;
+            border: none;
+            background:  limegreen;
+            font-family: "Comic Sans MS";
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        input[type=submit]:hover{
+            background:deepskyblue;
+        }
+        select {
+            width: 350px;
+            padding: 16px 20px;
+            border: none;
+            background: #f1f1f1;
+            font-family: "Lucida Console", Monaco, monospace;
+        }
+        select option {
+            width: 100%;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 0px;
+            background-color: #f1f1f1;
+            font-size: 15px;
+            font-family: "Agency FB";
+        }
+
+        /* Add a background color when the inputs get focus */
+        input[type=text]:focus, input[type=password]:focus, input[type=email] {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        .exists{
+            color: green;
+        }
+
+        .not-exists{
+            color: red;
+        }
+    </style>
+
+</head>
+
+<div class="registerUser">
+    <h1 style="font-family: 'Agency FB';color:dodgerblue;padding-top: 20px;padding-left: 300px">
+        <u>Register User Details</u>
+    </h1>
+    <form name="registerUserForm" class="form-container" novalidate ng-app="HostelApp" ng-controller="RegisterUserController">
+        <div class="register-container">
+            <table  align="center" style="padding-left: 100px">
+                <tr>
+                    <th width="200px">Enter Name</th>
+                    <th>:</th>
+                    <td>
+                        <input type="text" placeholder="Enter Name" name="name" ng-model="name" ng-pattern="/[a-zA-Z]$/" ng-minlength="4" ng-maxlength="40" ng-required="true">
+                    </td>
+                    <th>
+                        <span ng-show="registerUserForm.name.$error.required">  * The name is required.</span>
+                        <span ng-show="registerUserForm.name.$error.minlength">  * The name should be at least 4 characters length</span>
+                        <span ng-show="registerUserForm.name.$error.maxlength">  * The name should not exceed 50 characters</span>
+                        <span ng-show="registerUserForm.name.$error.pattern"> * The name should be in alphabets only</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>User Name</th>
+                    <th>:</th>
+                    <td>
+                        <input type="text" placeholder="Enter User Name" name="username" ng-model="username" ng-pattern="/[a-zA-Z0-9]/"  ng-maxlength="40" ng-required="true" ng-keyup="checkUserName()">
+                    </td>
+                    <th>
+                        <span ng-class="addClass(unamestatus)" >{{ unamestatus }}</span>
+                        <span ng-show="registerUserForm.username.$error.required">  * The username is required.</span>
+                        <span ng-show="registerUserForm.username.$error.maxlength">  * The username should not exceed 40 characters</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Designation</th>
+                    <th>:</th>
+                    <th>
+                        <select name="usertype" ng-model="usertype" ng-required="true">
+                            <option>Admin</option>
+                            <option>Warden</option>
+                            <option>Clerk</option>
+                            <option>Student Coordinator</option>
+                        </select>
+                    </th>
+                    <th>
+                        <span ng-show="registerUserForm.usertype.$error.require || registerUserForm.usertype.$invalid">* Choose User type</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <th>:</th>
+                    <td>
+                        <input type='email' placeholder="Enter Email" name="email" ng-model='email' ng-required="true">
+                    </td>
+                    <th>
+                        <span ng-show="registerUserForm.email.$error.required"> * Email ID should not be empty.</span>
+                        <span ng-show="registerUserForm.email.$error.email"> * Email ID is not valid</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <th>:</th>
+                    <td><input type="text" placeholder="Enter Mobile Number"
+                               name="phone" ng-model="phone" ng-required="true" ng-minlength="10" ng-maxlength="10" ng-pattern="/[0-9]{10}/">
+                    </td>
+                    <th>
+                        <span ng-show="registerUserForm.phone.$error.required"> * Mobile number should not be empty.</span>
+                        <span ng-show="registerUserForm.phone.$error.minlength"> * Mobile number must have 10 digits</span>
+                        <span ng-show="registerUserForm.phone.$error.maxlength"> * Mobile number must have 10 digits only.</span>
+                        <span ng-show="registerUserForm.phone.$error.pattern"> * Mobile number is invalid</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <th>:</th>
+                    <td>
+                        <input type="password" placeholder="Enter Password" name="password" ng-model="password" ng-required="true"
+                               ng-init="password_error_show=0"
+                               ng-focus="password_error_show=1"
+                               ng-change="password_error_show=password_error_show+1;changepassword()">
+                    </td>
+                    <th style="color: orange;">
+                        <span ng-show="registerUserForm.password.$error.required"> * Password should not be empty.</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Confirm Password</th>
+                    <th>:</th>
+                    <td>
+                        <input type="password" placeholder="Confirm Password" name="password2" ng-model="password2" required
+                               ng-init="cpassword_error_show=0"
+                               ng-focus="cpassword_error_show=1"
+                               ng-change="cpassword_error_show=cpassword_error_show+1;changepassword()">
+                    </td>
+                    <th>
+                        <span style="color: orange;" ng-show="cpassword_error_show > 0 && password !== password2"> * Passwords did not matched</span>
+                        <span style="color: #3c823f;" ng-show="cpassword_error_show > 0 && password === password2"> Passwords matched.</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th></th><th></th>
+                    <td>
+                        <input type="submit" value="Register here" name="submit" ng-click="insertUserData()">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+<script>
+    var app = angular.module("HostelApp",[]);
+    app.controller("RegisterUserController", function($scope, $http){
+        $scope.insertUserData = function(){
+            $http.post("registerUserDetails.php",
+                {
+                    'name': $scope.name,
+                    'username': $scope.username,
+                    'usertype': $scope.usertype,
+                    'email': $scope.email,
+                    'phone': $scope.phone,
+                    'password': $scope.password
+                }).success(function(data){
+                alert(data);
+                $scope.name = null;
+                $scope.username = null;
+                $scope.usertype= null;
+                $scope.email= null;
+                $scope.phone= null;
+                $scope.password=null;
+            });
+        }
+        $scope.checkUserName = function(){
+              $http({
+                  method: 'post',
+                  url: 'checkUserName.php',
+                  data: {username:$scope.username}
+              }).then(function successCallback(response) {
+                  $scope.unamestatus = response.data;
+              });
+        }
+        $scope.addClass = function(unamestatus){
+            if(unamestatus == 'Available'){
+                return 'response exists';
+            }else if(unamestatus == 'User Name Already Exists'){
+                return 'response not-exists';
+            }else{
+                return 'hide';
+            }
+        }
+    });
+</script>
+
